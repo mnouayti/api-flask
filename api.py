@@ -22,7 +22,7 @@ class Page(object):
     def __init__(self, title, html, url, **kwargs):
         self.html = html
         self.created_at = datetime.now()
-        self.id = hashlib.md5(bytes(url + html, "ascii")).hexdigest()
+        self.id = hashlib.md5(bytes(url, "ascii")).hexdigest()
         self.title = title
         self.url = url
 
