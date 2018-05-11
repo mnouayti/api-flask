@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+
+    flask:
+        build: .
+        ports:
+            - "5000:5000"
+        volumes:
+          - .:/code
+
+        entrypoint: python api.py
+        depends_on:
+            - mongo
+
+    mongo:
+        image: mongo:3.4.0
+        ports:
+            - "27017:27017"
