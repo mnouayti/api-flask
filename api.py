@@ -19,12 +19,14 @@ import hashlib
 
 class Page(object):
 
-    def __init__(self, title, html, url, **kwargs):
+    def __init__(self, title, html, url, created_by, **kwargs):
         self.html = html
         self.created_at = datetime.now()
-        self.id = hashlib.md5(bytes(url, "ascii")).hexdigest()
+        self.created_by = created_by
+        self.id = hashlib.md5(bytes(url + html, "utf-8")).hexdigest()
         self.title = title
         self.url = url
+        
 
     def __repr__(self):
         return '<Page(title={self.title!r})>'.format(self=self)
@@ -39,6 +41,7 @@ class PageSchema(Schema):
 
     html = fields.Str(required=True)
     created_at = fields.DateTime()
+    created_by = fields.Str(required=True)
     id = fields.Str()
     title = fields.Str(required=True)
     url = fields.Url(required=True)
@@ -78,7 +81,7 @@ class Pages(Resource):
             if mongo.db.pages.find_one({"id": page.id}):
                 return {"message": "Page already exists."}, 400
             else:
-                mongo.db.pages.insert(PageSchema().dump(page))
+                mongo.db.pages.insert(PageSchema().dump(page).data)
                 return {"message": "ok", "id": page.id}, 201
 
 
