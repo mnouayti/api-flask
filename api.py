@@ -10,7 +10,7 @@ from flask_pymongo import PyMongo
 from flask_restful import Api, Resource
 from marshmallow import Schema, fields
 import hashlib
-
+from flask_cors import CORS
 
 # *****************************************************************************
 # MODELS
@@ -91,6 +91,7 @@ class Pages(Resource):
 
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 app.config["MONGO_DBNAME"] = "pages_db"
 app.config["MONGO_HOST"] = "mongo"
 mongo = PyMongo(app, config_prefix='MONGO')
