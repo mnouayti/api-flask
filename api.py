@@ -23,7 +23,7 @@ class Page(object):
         self.html = html
         self.created_at = datetime.now()
         self.created_by = created_by
-        self.id = hashlib.md5(bytes(url + html, "utf-8")).hexdigest()
+        self.id = hashlib.md5(bytes(url, "utf-8")).hexdigest()
         self.title = title
         self.url = url
         
