@@ -2,14 +2,21 @@ version: '2'
 
 services:
 
+    nginx:
+        build: ./nginx
+        ports:
+            - "80:80"
+        depends_on:
+            - flask
+
     flask:
         build: .
         ports:
-            - "5000:5000"
+            - "8000:8000"
         volumes:
           - .:/code
 
-        entrypoint: python api.py
+        entrypoint: uwsgi --ini /code/etc/api.ini
         depends_on:
             - mongo
 
