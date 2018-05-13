@@ -1,6 +1,6 @@
 # api flask
 
-> flask api that synchronises pages with a chrome extension and a vuejs app, using 2 http requests Post and Get, built with flask-restful, mongodb, pymongo, marshmallow.   
+> flask api that synchronises pages with a chrome extension and a vuejs app, built with flask-restful, mongodb, pymongo, marshmallow.   
 
 ## Endpoints
 
