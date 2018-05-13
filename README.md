@@ -43,3 +43,5 @@ You can run the project using docker-compose tool:
 ```bash
 $ docker-compose up
 ```
+
+For nginx and uWSGI check this branch [nginx-uWSGI](https://github.com/mnouayti/api-flask/tree/nginx-uWSGI)
