@@ -1,13 +1,13 @@
 # api flask
 
-> flask api that synchronises pages with a chrome extension and a vuejs app, built with flask-restful, mongodb, pymongo, marshmallow.   
+> flask api that synchronises pages with a chrome extension and a vuejs app, built with flask-restful, mongodb, pymongo, marshmallow, nginx, uWSGI  
 
 ## Endpoints
 
 
 ..* GET
-all pages : http://0.0.0.0:500/api/pages
-single page: http://0.0.0.0:5000/api/pages/id
+all pages : http://localhost:8000/api/pages
+single page: http://localhost:8000/api/pages/id
 
 ..* POST
 http://0.0.0.0:500/api/pages 
